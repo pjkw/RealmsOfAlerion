@@ -20,7 +20,9 @@ public class Map : MonoBehaviour
         // The vertical distance is vert == 3/4 * height == 3/2 * size.
 
         horizontalDistance = Mathf.Sqrt(3) * hexSize;
-        verticalDistance = hexSize * 1.35f; // 3 / 2 * hexSize; // okay this works, but we need a custom multiplier for now here
+        // this is the final value we were adjusting
+        // we were decreasing this down from 1.4 to get the narrow y spacing
+        verticalDistance = hexSize * 1.36f; // hexSize; // 1.4f; // 3 / 2 * hexSize; // okay this works, but we need a custom multiplier for now here
 
         GenerateMap();
     }
@@ -41,5 +43,14 @@ public class Map : MonoBehaviour
                 }
             }
         }
+
+        // set size after done, since is affected by parent
+
+        SetSize();
+    }
+
+    void SetSize()
+    {
+        this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 }
