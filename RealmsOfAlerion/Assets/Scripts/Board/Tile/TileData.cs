@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
 public class TileData : MonoBehaviour
 {
-    public Vector2Int coordinates;
-
     public TextMeshProUGUI text;
+
+    private Vector2Int _coordinates;
+
+    public Vector2Int coordinates 
+    { 
+        get { return _coordinates; } 
+        set { 
+            _coordinates = value; 
+            SetTextCoordinates(); 
+        } 
+    }
 
     void Start()
     {

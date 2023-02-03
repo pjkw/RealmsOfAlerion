@@ -36,10 +36,14 @@ public class Map : MonoBehaviour
                 if (y % 2 == 0)
                 {
                     GameObject tile = Instantiate(tilePrefab, new Vector3(x * horizontalDistance, y * verticalDistance, 0), Quaternion.identity, this.transform);
+                    TileData tileData = tile.GetComponent<TileData>();
+                    tileData.coordinates = new Vector2Int(x, y);
                 }
                 else
                 {
                     GameObject tile = Instantiate(tilePrefab, new Vector3(x * horizontalDistance + horizontalDistance / 2, y * verticalDistance, 0), Quaternion.identity, this.transform);
+                    TileData tileData = tile.GetComponent<TileData>();
+                    tileData.coordinates = new Vector2Int(x, y);
                 }
             }
         }
