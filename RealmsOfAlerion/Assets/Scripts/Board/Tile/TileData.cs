@@ -18,6 +18,17 @@ public class TileData : MonoBehaviour
         } 
     }
 
+    public enum TileType
+    {
+        Grass,
+        Water,
+        Mountain,
+        Forest,
+        Desert
+    }
+
+    public TileType tileType;
+
     void Start()
     {
         SetTextCoordinates();
