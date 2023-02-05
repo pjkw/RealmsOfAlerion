@@ -11,14 +11,17 @@ public class Map : MonoBehaviour
 
     public float hexSize;
 
-    float verticalDistance;
-    float horizontalDistance;
+    public float verticalDistance;
+    public float horizontalDistance;
 
     public GameObject tilePrefab;
 
     // these are the tiles we will build with
     public GameObject villageTile;
     GameObject currentGameObject;
+
+    private Dictionary<Vector2, Vector3> hexPositions = new Dictionary<Vector2, Vector3>();
+
 
     void Awake()
     {
@@ -36,6 +39,44 @@ public class Map : MonoBehaviour
         verticalDistance = hexSize * 1.36f; // hexSize; // 1.4f; // 3 / 2 * hexSize; // okay this works, but we need a custom multiplier for now here
 
         GenerateMap();
+    }
+
+    // fill dictionary with hex positions
+    void GenerateHexPositions()
+    {
+        float x = 0;
+        float y = 0;
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 100; j++)
+            {
+                Vector2 hexCoord = new Vector2(i, j);
+                Vector3 mousePos = new Vector3(x, y, 0);
+                hexPositions.Add(hexCoord, mousePos);
+
+                x += horizontalDistance;
+            }
+            y += verticalDistance;
+        }
+    }
+
+    public Vector3 GetClosestHexagonalPosition(Vector3 mousePos)
+    {
+        float minDistance = float.MaxValue;
+        Vector3 closestHexagonalPos = Vector3.zero;
+
+        // Iterate over the hexagonal positions and find the closest one to the mouse position
+        foreach (KeyValuePair<Vector2, Vector3> hexPos in hexPositions)
+        {
+            float distance = Vector3.Distance(mousePos, hexPos.Value);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestHexagonalPos = hexPos.Value;
+            }
+        }
+
+        return closestHexagonalPos;
     }
 
     void GenerateMap()
@@ -66,7 +107,7 @@ public class Map : MonoBehaviour
 
     void SetSize()
     {
-        this.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        // this.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
     }
 
     public GameObject SpawnTile(TileData.TileType tileType)
