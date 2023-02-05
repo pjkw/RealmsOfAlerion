@@ -8,6 +8,7 @@ public class Log : MonoBehaviour
     public Text log;
     public Text gamePhase;
     public Text playerTurn;
+    public Text tutorial;
 
     void Update()
     {
@@ -27,6 +28,11 @@ public class Log : MonoBehaviour
     public void LogPlayerTurn(string message)
     {
         playerTurn.text = message;
+    }
+
+    public void LogTutorial(string message)
+    {
+        tutorial.text = message;
     }
     
     void LogData()
