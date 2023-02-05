@@ -26,4 +26,20 @@ public class GameState : MonoBehaviour
     }
 
     public GamePhase gamePhase;
+
+    // singleton
+    public static GameState instance;
+
+    void Awake()
+    {
+        // singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
