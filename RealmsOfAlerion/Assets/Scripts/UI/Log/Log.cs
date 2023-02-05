@@ -5,10 +5,36 @@ using UnityEngine.UI;
 
 public class Log : MonoBehaviour
 {
-    public Text text;
+    public Text log;
+    public Text gamePhase;
+    public Text playerTurn;
+
+    void Update()
+    {
+        LogData();
+    }
 
     public void LogMessage(string message)
     {
-        text.text = message;
+        log.text = message;
+    }
+
+    public void LogGamePhase(string message)
+    {
+        gamePhase.text = message;
+    }
+
+    public void LogPlayerTurn(string message)
+    {
+        playerTurn.text = message;
+    }
+    
+    void LogData()
+    {
+        // log game phase
+        LogGamePhase("Game Phase: " + GameState.instance.gamePhase);
+
+        // log player turn
+        LogPlayerTurn("Player Turn: " + GameState.instance.playerTurn);
     }
 }
