@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OnClickTile : MonoBehaviour
 {
+    /*
     Log log;
 
     void Awake()
@@ -27,4 +28,6 @@ public class OnClickTile : MonoBehaviour
         // output tile data and coordinates to log
         log.LogMessage("Tile Type: " + tileData.tileType + " Coordinates: " + coordinates);
     }
+
+    */
 }
