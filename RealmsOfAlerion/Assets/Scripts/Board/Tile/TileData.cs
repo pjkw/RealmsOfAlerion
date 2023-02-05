@@ -24,7 +24,8 @@ public class TileData : MonoBehaviour
         Water,
         Mountain,
         Forest,
-        Desert
+        Desert,
+        Village
     }
 
     public TileType tileType;

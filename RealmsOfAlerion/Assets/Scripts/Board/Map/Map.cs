@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    public static Map instance;
+
     public int width = 10;
     public int height = 10;
 
@@ -13,6 +15,15 @@ public class Map : MonoBehaviour
     float horizontalDistance;
 
     public GameObject tilePrefab;
+
+    // these are the tiles we will build with
+    public GameObject villageTile;
+    GameObject currentGameObject;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -55,6 +66,23 @@ public class Map : MonoBehaviour
 
     void SetSize()
     {
-        this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        this.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+    }
+
+    public GameObject SpawnTile(TileData.TileType tileType)
+    {
+        if (tileType == TileData.TileType.Village)
+        {
+            // set the z coordinate of this tile to -1 so we show the tile on top top
+            // in the future if we want to spawn a marker on this tile,
+            // such as what level this structure is,
+            // then we would decrement the z by one, so -2
+
+            currentGameObject = Instantiate(villageTile, new Vector3(0, 0, -1), Quaternion.identity, this.transform);
+            
+            return currentGameObject;
+        }
+
+        return null;
     }
 }
