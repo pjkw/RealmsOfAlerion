@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardData : MonoBehaviour
 {
-    // enum card type
+    [System.Serializable]
     public enum CardType
     {
         None,
@@ -13,8 +13,9 @@ public class CardData : MonoBehaviour
         Building
     }
 
-    public CardType cardType;
+    [SerializeField] public CardType cardType;
 
+    [System.Serializable]
     public enum BuildingType
     {
         None,
@@ -28,32 +29,38 @@ public class CardData : MonoBehaviour
         Wall
     }
 
-    public BuildingType buildingType;
+    
+    [SerializeField] public BuildingType buildingType;
 
-    public enum ResourceType
+    public enum ResourceCostType
     {
         None,
         Gold,
         Wood,
         Food
     }
-    
-    public ResourceType resourceType;
 
-    public enum ResourceCount
+    [SerializeField] public ResourceCostType resourceCostType1;
+    [SerializeField] public ResourceCostType resourceCostType2;
+    [SerializeField] public ResourceCostType resourceCostType3;
+
+    [System.Serializable]
+    public enum ResourceOutputType
     {
         None,
-        One,
-        Two,
-        Three,
-        Four,
-        Five,
-        Six,
-        Seven,
-        Eight,
-        Nine,
-        Ten
+        Gold,
+        Wood,
+        Food
     }
 
-    public ResourceCount resourceCount;
+    [SerializeField] public ResourceOutputType resourceOutputType1;
+    [SerializeField] public ResourceOutputType resourceOutputType2;
+    [SerializeField] public ResourceOutputType resourceOutputType3;
+
+    [SerializeField] public int resourceCost1;
+    [SerializeField] public int resourceCost2;
+    [SerializeField] public int resourceCost3;
+    [SerializeField] public int resourceOutput1;
+    [SerializeField] public int resourceOutput2;
+    [SerializeField] public int resourceOutput3;
 }
