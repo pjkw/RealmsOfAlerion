@@ -1172,7 +1172,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.26886794, g: 0.3037212, b: 0.3584906, a: 0}
+  m_BackGroundColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3451,9 +3451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3ee398fd39b446b9902524fb2bf337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 30
-  height: 30
+  width: 10
+  height: 10
   hexSize: 1.45
+  verticalDistance: 0
+  horizontalDistance: 0
   tilePrefab: {fileID: 6224987624809414303, guid: 16efeca568c3b482292dd56f33897c61, type: 3}
   villageTile: {fileID: 6224987624809414303, guid: 8e68b80d496a47d4ead3fa45f5ecf929, type: 3}
 --- !u!1 &1825800655
@@ -3500,7 +3502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c878662a9707d4d9bcdc52bc5a53c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
 --- !u!1 &1842144612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,7 +3976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2138460106
 Transform:
   m_ObjectHideFlags: 0
