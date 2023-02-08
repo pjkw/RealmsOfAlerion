@@ -9,12 +9,7 @@ public class DealCards : MonoBehaviour
     public GameObject[] cards;
     public AudioSource audioSource;
 
-    void Start()
-    {
-        Deal();
-    }
-
-    void Deal()
+    public void Deal()
     {
         for (int i = 0; i < cards.Length; i++)
         {

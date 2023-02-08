@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject player;
     [SerializeField] DealCards dealCards;
+    [SerializeField] GameObject playerTurnBanner;
+    [SerializeField] Text playerTurnText;
 
     void Awake()
     {
@@ -39,7 +42,16 @@ public class GameManager : MonoBehaviour
         // any specific player actions can be determined with PlayerTurn.Player1 or PlayerTurn.Player2
         
         GameState.instance.gamePhase = GameState.GamePhase.Buy;
+
+        ShowPlayerTurnBanner();
     }
 
-    // allow player to select a card on GameState.GamePhase.Buy
+    void ShowPlayerTurnBanner()
+    {
+        if (GameState.instance.playerTurn == GameState.PlayerTurn.Player1)
+        {
+            playerTurnBanner.SetActive(true);
+            playerTurnText.text = "Player 1 Turn";
+        }
+    }
 }
