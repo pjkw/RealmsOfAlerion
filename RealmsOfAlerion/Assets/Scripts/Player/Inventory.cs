@@ -68,4 +68,129 @@ public class Inventory : MonoBehaviour
         player2Resources.mana = 1;
         player2Resources.gold = 1;
     }
+
+
+    public bool HasEnoughResources(int playerNumber, Dictionary<ResourceCostType, int> resourceCost)
+    {
+        Resources resources;
+
+        if (playerNumber == 1)
+        {
+            resources = player1Resources;
+        }
+        else
+        {
+            resources = player2Resources;
+        }
+
+        foreach (KeyValuePair<ResourceCostType, int> cost in resourceCost)
+        {
+            switch (cost.Key)
+            {
+                case ResourceCostType.Food:
+                    if (resources.food < cost.Value)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Wood:
+                    if (resources.wood < cost.Value)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Magic:
+                    if (resources.magic < cost.Value)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Mana:
+                    if (resources.mana < cost.Value)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Gold:
+                    if (resources.gold < cost.Value)
+                    {
+                        return false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return true;
+    }
+
+    public bool CheckPlayerResources(CardData cardData)
+    {
+        // Get the player's resources from the Inventory instance
+        Inventory.Resources playerResources = player1Resources;
+
+        // Check if the player has enough of each resource required for the card
+        foreach (ResourceCost resourceCost in cardData.resourceCost)
+        {
+            switch (resourceCost.resourceType)
+            {
+                case ResourceCostType.Food:
+                    if (playerResources.food < resourceCost.cost)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Wood:
+                    if (playerResources.wood < resourceCost.cost)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Magic:
+                    if (playerResources.magic < resourceCost.cost)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Mana:
+                    if (playerResources.mana < resourceCost.cost)
+                    {
+                        return false;
+                    }
+                    break;
+                case ResourceCostType.Gold:
+                    if (playerResources.gold < resourceCost.cost)
+                    {
+                        return false;
+                    }
+                    break;
+            }
+        }
+
+        // If the player has enough of each resource required for the card, return true
+        return true;
+    }
 }
+
+/*
+int playerNumber = 1; // For example purposes, let's say this is player 1
+
+        // Create a dictionary with the resource type and cost
+        Dictionary<ResourceCostType, int> resourceCost = new Dictionary<ResourceCostType, int>();
+        resourceCost.Add(ResourceCostType.Wood, 1);
+
+        // Call the HasEnoughResources method to check if the player has enough resources
+        bool hasEnoughResources = Inventory.instance.HasEnoughResources(playerNumber, resourceCost);
+
+        // Output the result
+        if (hasEnoughResources)
+        {
+            Debug.Log("Player has enough resources");
+        }
+        else
+        {
+            Debug.Log("Player does not have enough resources");
+        }
+*/
+

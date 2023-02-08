@@ -14,10 +14,7 @@ public class ClickableArea : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         // Output the name of the GameObject that is being clicked
         // Debug.Log(name + "Game Object Click in Progress");
 
-        CardData cardDate = GetComponentInParent<CardData>();
-
-        Debug.Log(cardDate.cardType);
-        Debug.Log(cardDate.buildingType);
+        CardData cardData = GetComponentInParent<CardData>();
 
         audioManager.PlaySelectCard();
 
@@ -25,6 +22,20 @@ public class ClickableArea : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     
         // assign last selected card to the parent object of this object
         LastSelectedCard.instance.lastSelectedCard = gameObject.transform.parent.gameObject;
+
+        // Check if the player has enough resources to purchase the card
+
+        bool canPurchase = Inventory.instance.CheckPlayerResources(cardData);
+
+        if (canPurchase)
+        {
+            Debug.Log("Player has enough resources to purchase the card");
+        }
+
+        else
+        {
+            Debug.Log("Player does not have enough resources to purchase the card");
+        }
     }
 
     // Detect if clicks are no longer registering

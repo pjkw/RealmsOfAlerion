@@ -2,6 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ResourceCost
+{
+    public ResourceCostType resourceType;
+    public int cost;
+}
+
+public enum ResourceCostType
+{
+    None,
+    Food,
+    Wood,
+    Magic,
+    Mana,
+    Gold
+}
+
 public class CardData : MonoBehaviour
 {
     [System.Serializable]
@@ -28,39 +45,18 @@ public class CardData : MonoBehaviour
         Tower,
         Wall
     }
-
     
     [SerializeField] public BuildingType buildingType;
+
+    public List<ResourceCost> resourceCost = new List<ResourceCost>();
 
     public enum ResourceCostType
     {
         None,
-        Gold,
+        Food,
         Wood,
-        Food
+        Magic,
+        Mana,
+        Gold
     }
-
-    [SerializeField] public ResourceCostType resourceCostType1;
-    [SerializeField] public ResourceCostType resourceCostType2;
-    [SerializeField] public ResourceCostType resourceCostType3;
-
-    [System.Serializable]
-    public enum ResourceOutputType
-    {
-        None,
-        Gold,
-        Wood,
-        Food
-    }
-
-    [SerializeField] public ResourceOutputType resourceOutputType1;
-    [SerializeField] public ResourceOutputType resourceOutputType2;
-    [SerializeField] public ResourceOutputType resourceOutputType3;
-
-    [SerializeField] public int resourceCost1;
-    [SerializeField] public int resourceCost2;
-    [SerializeField] public int resourceCost3;
-    [SerializeField] public int resourceOutput1;
-    [SerializeField] public int resourceOutput2;
-    [SerializeField] public int resourceOutput3;
 }
