@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject playerTurnBanner;
     [SerializeField] Text playerTurnText;
 
+    [SerializeField] AudioSource newPlayerTurnAudioSource;
+
     void Awake()
     {
         if (instance == null)
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour
     {
         if (GameState.instance.playerTurn == GameState.PlayerTurn.Player1)
         {
+            newPlayerTurnAudioSource.Play();
+            
             playerTurnBanner.SetActive(true);
             playerTurnText.text = "Player 1 Turn";
         }
