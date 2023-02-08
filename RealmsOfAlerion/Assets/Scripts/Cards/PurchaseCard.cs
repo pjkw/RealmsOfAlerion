@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ClickableArea : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class PurchaseCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     // Detect current clicks on the GameObject (the one with the script attached)
 
@@ -30,6 +30,9 @@ public class ClickableArea : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if (canPurchase)
         {
             Debug.Log("Player has enough resources to purchase the card");
+
+            // purchase the card, add to player's inventory
+            Inventory.instance.PurchaseCard(gameObject.transform.parent.gameObject, cardData);
         }
 
         else

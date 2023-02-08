@@ -2846,8 +2846,9 @@ GameObject:
   - component: {fileID: 896855738}
   - component: {fileID: 896855737}
   - component: {fileID: 896855740}
+  - component: {fileID: 896855741}
   m_Layer: 5
-  m_Name: Canvas - Deal Cards
+  m_Name: Canvas - Deal Cards / Move Cards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2963,6 +2964,23 @@ MonoBehaviour:
   - {fileID: 334796742}
   - {fileID: 2086855578}
   audioSource: {fileID: 407689977}
+--- !u!114 &896855741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896855735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4dfc70d97fa4bb79f7e53fa20c9d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  delay: 0.25
+  cardPositions: []
+  cards: []
+  audioSource: {fileID: 0}
 --- !u!1 &899986273
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,7 +4477,7 @@ GameObject:
   - component: {fileID: 1283451581}
   - component: {fileID: 1283451580}
   m_Layer: 5
-  m_Name: Clickable Area
+  m_Name: Purchase Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4686,12 +4704,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b705db663303f34cb3dbd4a079824ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryBar: {fileID: 905373862}
   player1Resources:
-    food: 1
-    wood: 1
-    magic: 1
-    mana: 1
-    gold: 1
+    food: 0
+    wood: 0
+    magic: 0
+    mana: 0
+    gold: 0
   player2Resources:
     food: 0
     wood: 0
@@ -4706,6 +4725,7 @@ MonoBehaviour:
     cards: []
   player2ActivatedCards:
     cards: []
+  moveCardOnPurchase: {fileID: 0}
 --- !u!4 &1324968360
 Transform:
   m_ObjectHideFlags: 0

@@ -25,4 +25,15 @@ public class InventoryBar : MonoBehaviour
         manaText.text = Inventory.instance.player1Resources.mana.ToString();
         goldText.text = Inventory.instance.player1Resources.gold.ToString();
     }
+
+    // we will also need a way to update the player's 2 resources
+
+    public void UpdateText()
+    {
+        foodText.text = Inventory.instance.player1Resources.food.ToString();
+        woodText.text = Inventory.instance.player1Resources.wood.ToString();
+        magicText.text = Inventory.instance.player1Resources.magic.ToString();
+        manaText.text = Inventory.instance.player1Resources.mana.ToString();
+        goldText.text = Inventory.instance.player1Resources.gold.ToString();
+    }
 }

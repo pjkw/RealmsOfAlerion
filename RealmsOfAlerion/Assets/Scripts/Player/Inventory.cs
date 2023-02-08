@@ -6,6 +6,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
+    [SerializeField] InventoryBar inventoryBar;
+
     [System.Serializable]
     public class Resources
     {
@@ -42,6 +44,8 @@ public class Inventory : MonoBehaviour
     [Header("Purchased Cards")]
     public ActivatedCards player1ActivatedCards;
     public ActivatedCards player2ActivatedCards;
+
+    [SerializeField] MoveCardOnPurchase moveCardOnPurchase;
 
     
     void Awake()
@@ -170,6 +174,47 @@ public class Inventory : MonoBehaviour
 
         // If the player has enough of each resource required for the card, return true
         return true;
+    }
+
+    public void PurchaseCard(GameObject go, CardData cardData)
+    {
+        
+        // If the player has enough resources, subtract the cost from the player's resources
+        foreach (ResourceCost resourceCost in cardData.resourceCost)
+        {
+            switch (resourceCost.resourceType)
+            {
+                case ResourceCostType.Food:
+                    player1Resources.food -= resourceCost.cost;
+                    break;
+                case ResourceCostType.Wood:
+                    player1Resources.wood -= resourceCost.cost;
+                    break;
+                case ResourceCostType.Magic:
+                    player1Resources.magic -= resourceCost.cost;
+                    break;
+                case ResourceCostType.Mana:
+                    player1Resources.mana -= resourceCost.cost;
+                    break;
+                case ResourceCostType.Gold:
+                    player1Resources.gold -= resourceCost.cost;
+                    break;
+            }
+        }
+
+        inventoryBar.UpdateText();
+
+        // Add the card to the player's activated cards
+        player1ActivatedCards.cards.Add(go);
+
+        // Remove the card from the player's unactivated cards
+        // TODO: we will need to add the dealt cards to the
+        // player1UnactivatedCards.cards.Remove(go);
+
+
+        // move card down into the tableau area
+
+        // moveCardOnPurchase.MovePurchasedCardToTableauArea();
     }
 }
 
