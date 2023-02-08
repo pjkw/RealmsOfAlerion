@@ -3,16 +3,28 @@ using DentedPixel;
 
 public class DealCards : MonoBehaviour
 {
+    [SerializeField] float speed = 0.5f;
+    [SerializeField] float delay = 0.25f;
     public Transform[] cardPositions;
     public GameObject[] cards;
+    public AudioSource audioSource;
 
     void Start()
     {
+        Deal();
+    }
+
+    void Deal()
+    {
         for (int i = 0; i < cards.Length; i++)
         {
-            // LeanTween.scale( avatarScale, new Vector3(1.7f, 1.7f, 1.7f), 5f).setEase(LeanTweenType.easeOutBounce);
             int index = i;
-            LeanTween.move(cards[index], cardPositions[index].position, 1f).setEase(LeanTweenType.easeInQuad).setDelay(i * 0.5f);
+            LeanTween.move(cards[index], cardPositions[index].position, speed).setEase(LeanTweenType.easeInQuad).setDelay(i * delay).setOnComplete(() => PlaySound());
         }
+    }
+
+    void PlaySound()
+    {
+        audioSource.Play();
     }
 }

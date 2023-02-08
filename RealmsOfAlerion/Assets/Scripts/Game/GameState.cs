@@ -20,6 +20,7 @@ public class GameState : MonoBehaviour
     public enum GamePhase
     {
         None,
+        DealCards,
         Buy,
         Build,
         GameOver
